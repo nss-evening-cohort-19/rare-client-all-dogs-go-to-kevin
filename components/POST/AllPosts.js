@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { useState, useEffect } from 'react';
 import { getPosts, getPostsBySearchTerm } from '../../managers/posts';
 import { Post } from './Post';
@@ -23,7 +24,7 @@ export const AllPost = () => {
     <>
       <PostSearch onSearchTermChange={onSearchTermChange} searchTerm={searchTerm} />
       <div style={{ marginTop: '2rem' }}>
-        <button onClick={() => navigate('/posts/create')}>
+        <button type="submit" onClick={() => ('/posts/create')}>
           Make A Post!
         </button>
         <div className="posts">
@@ -35,3 +36,5 @@ export const AllPost = () => {
     </>
   );
 };
+
+// add navigate in front of ( on line 27)
