@@ -1,5 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { useState, useEffect } from 'react';
+// import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { getPosts, getPostsBySearchTerm } from '../../managers/posts';
 import { Post } from './Post';
 // eslint-disable-next-line import/extensions
@@ -8,6 +10,7 @@ import { PostSearch } from './PostSearch.js';
 export const AllPost = () => {
   const [posts, setPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  // const router = useRouter();
 
   useEffect(() => {
     if (searchTerm.length > 1) {
@@ -24,9 +27,9 @@ export const AllPost = () => {
     <>
       <PostSearch onSearchTermChange={onSearchTermChange} searchTerm={searchTerm} />
       <div style={{ marginTop: '2rem' }}>
-        <button type="submit" onClick={() => ('/posts/create')}>
+        <Link passHref href="/POST/new">
           Make A Post!
-        </button>
+        </Link>
         <div className="posts">
           {
                     posts.map((post) => <Post key={post.id} post={post} />)

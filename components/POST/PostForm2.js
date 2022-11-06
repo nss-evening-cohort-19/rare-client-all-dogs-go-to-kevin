@@ -40,11 +40,11 @@ function PostForm({ obj }) {
     e.preventDefault();
     if (obj.id) {
       updatePost(postFormInput)
-        .then(() => router.push('/post'));
+        .then(() => router.push('/'));
     } else {
       const payload = { ...postFormInput, uid: user.uid };
       addPost(payload).then(() => {
-        router.push('/post');
+        router.push('/');
       });
     }
   };
