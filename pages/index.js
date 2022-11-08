@@ -1,8 +1,8 @@
-import { AllPost } from '../components/POST/AllPosts';
+import Posts from './post';
 
 function Home() {
   return (
-    <AllPost />
+    <Posts />
   );
 }
 
