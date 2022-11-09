@@ -4,7 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
-import { addPost, getPosts, updatePost } from '../../managers/posts';
+import { addPost, getPostById, updatePost } from '../../managers/posts';
 
 const initialState = {
   id: '',
@@ -23,7 +23,7 @@ function PostForm({ obj }) {
   const router = useRouter();
 
   useEffect(() => {
-    getPosts().then(setPost);
+    getPostById().then(setPost);
     console.warn(post);
     if (obj.id) setPostFormInput(obj);
   }, [obj]);

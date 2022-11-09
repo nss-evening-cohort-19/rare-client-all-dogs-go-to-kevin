@@ -6,9 +6,9 @@ import PostForm from '../../../components/POST/PostForm';
 export default function EditPost() {
   const [editItem, setEditItem] = useState({});
   const router = useRouter();
-  const { postId } = router.query;
+  const { id } = router.query;
   useEffect(() => {
-    getPostById(postId).then(setEditItem);
-  }, [postId]);
+    getPostById(id).then(setEditItem);
+  }, [id]);
   return (<PostForm obj={editItem} />);
 }
