@@ -7,14 +7,13 @@ import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { addPost, getPostById, updatePost } from '../../managers/posts';
 
 const initialState = {
-  id: '',
-  user_id: '',
-  category_id: '',
+  user_id: null,
+  category_id: null,
   title: '',
-  publication_date: '',
+  publication_date: new Date().toLocaleDateString(),
   image_url: '',
   content: '',
-  approved: '',
+  approved: true,
 };
 
 function PostForm({ obj }) {
