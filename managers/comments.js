@@ -7,6 +7,9 @@ export const getCommentsBySearchTerm = (searchTerm) => fetch(`http://localhost:8
 export const getCommentById = (id) => fetch(`http://localhost:8088/comments/${id}`)
   .then((res) => res.json());
 
+export const getCommentByPostId = (id) => fetch(`http://localhost:8088/comments?post_id/${id}`)
+  .then((res) => res.json());
+
 export const addComment = (comment) => fetch('http://localhost:8088/comments', {
   method: 'POST',
   headers: {
@@ -15,7 +18,7 @@ export const addComment = (comment) => fetch('http://localhost:8088/comments', {
   body: JSON.stringify(comment),
 });
 
-export const updateComment = (comment) => fetch(`http://localhost:8088/animals/${comment.id}`, {
+export const updateComment = (comment) => fetch(`http://localhost:8088/comments/${comment.id}`, {
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',

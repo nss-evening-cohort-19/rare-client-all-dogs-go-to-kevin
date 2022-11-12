@@ -21,17 +21,17 @@ function PostsCard({ postsObj, onUpdate }) {
           <li className="list-group-item">Content: {postsObj.content}</li>
           <li className="list-group-item">Date Created: {postsObj.publication_date}</li>
         </ul>
-        <Link href={`/comments/${postsObj.id}`} passHref>
+        <Link href={`/posts/${postsObj.id}`} passHref>
           <Button size="sm" variant="dark" className="m-2">
             VIEW
           </Button>
         </Link>
-        {/* <Link href={`/campaigns/edit/${postsObj.firebaseKey}`} passHref>
+        <Link href={`/posts/edit/${postsObj.id}`} passHref>
           <Button size="sm" variant="dark">
             EDIT
           </Button>
-        </Link> */}
-        <Button size="sm" variant="danger" onClick={deleteThisPost} className="m-2">
+        </Link>
+        <Button size="sm" variant="danger" onClick={deletThisPost} className="m-2">
           DELETE
         </Button>
       </Card.Body>

@@ -6,7 +6,7 @@ export default function SearchPosts({ post, setFilteredPost }) {
   const handleChange = (e) => {
     const { value } = e.target;
     setQuery(value);
-    const results = post.filter((item) => item.name.toLowerCase().includes(value.toLowerCase()));
+    const results = post.filter((item) => item.title.toLowerCase().includes(value.toLowerCase()));
     setFilteredPost(results);
   };
   return (
