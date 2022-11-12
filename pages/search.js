@@ -10,8 +10,9 @@ export default function Search() {
   const getFilteredPosts = () => {
     getPosts().then((postArray) => {
       const value = router.query.keyword;
+      console.warn(`value of keyword is${value}`);
       setFilteredData(postArray);
-      const results = postArray.filter((post) => post.title.toLowerCase().includes(value.toLowerCase()));
+      const results = postArray.filter((post) => post?.title.toLowerCase().includes(value?.toLowerCase()));
       setFilteredData(results);
       console.warn(results);
     });
@@ -26,7 +27,7 @@ export default function Search() {
   return (
     <div>
       {filteredData.length ? filteredData.map((post) => (
-        <PostsCard key={post.id} postObj={post} />
+        <PostsCard key={post.id} postsObj={post} />
 
       )) : <h2>Search Posts</h2>}
     </div>
