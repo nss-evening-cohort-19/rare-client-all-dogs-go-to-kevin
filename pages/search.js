@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import PostsCard from '../components/POST/PostsCard';
 import { getPosts } from '../managers/posts';
+import PostsCard from '../components/POST/PostsCard';
 
 export default function Search() {
   const router = useRouter();
