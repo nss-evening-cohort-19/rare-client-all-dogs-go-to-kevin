@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Link from 'next/link';
 import { Card, Button } from 'react-bootstrap';
 import Link from 'next/link';
 import { deletePost } from '../../managers/posts';
 
 function PostsCard({ postsObj, onUpdate }) {
-  const deletThisPost = () => {
+  const deleteThisPost = () => {
     if (window.confirm(`Delete ${postsObj.title}?`)) {
       deletePost(postsObj.id).then(() => onUpdate());
     }
@@ -31,7 +30,7 @@ function PostsCard({ postsObj, onUpdate }) {
             EDIT
           </Button>
         </Link>
-        <Button size="sm" variant="danger" onClick={deletThisPost} className="m-2">
+        <Button size="sm" variant="danger" onClick={deleteThisPost} className="m-2">
           DELETE
         </Button>
       </Card.Body>
@@ -45,7 +44,7 @@ PostsCard.propTypes = {
     title: PropTypes.string,
     content: PropTypes.string,
     id: PropTypes.number,
-    user_id: PropTypes.number,
+    user_id: PropTypes.string,
     publication_date: PropTypes.number,
     category_id: PropTypes.number,
     approved: PropTypes.number,
