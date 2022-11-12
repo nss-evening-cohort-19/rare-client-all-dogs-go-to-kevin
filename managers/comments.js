@@ -7,6 +7,9 @@ export const getCommentsBySearchTerm = (searchTerm) => fetch(`http://localhost:8
 export const getCommentById = (id) => fetch(`http://localhost:8088/comments/${id}`)
   .then((res) => res.json());
 
+export const getCommentByPostId = (id) => fetch(`http://localhost:8088/comments?post_id/${id}`)
+  .then((res) => res.json());
+
 export const addComment = (comment) => fetch('http://localhost:8088/comments', {
   method: 'POST',
   headers: {

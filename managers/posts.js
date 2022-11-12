@@ -23,6 +23,6 @@ export const updatePost = (post) => fetch(`http://localhost:8088/posts/${post.id
   body: JSON.stringify(post),
 });
 
-export const deletePost = (postId) => fetch(`http://localhost:8088/posts/${postId}`, {
+export const deletePost = (id) => fetch(`http://localhost:8088/posts/${id}`, {
   method: 'DELETE',
 });

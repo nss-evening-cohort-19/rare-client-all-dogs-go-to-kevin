@@ -1,18 +1,19 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Card, Col, Container, Row,
 } from 'react-bootstrap';
 import { getPostById } from '../../managers/posts';
+// import { getPostById } from '../../managers/posts';
 
 export default function ViewPosts() {
   const [postDetails, setPostDetails] = useState({});
   const router = useRouter();
-  const { postId } = router.query;
-
+  const { id } = router.query;
+  console.warn(postDetails);
   useEffect(() => {
-    getPostById(postId).then(setPostDetails);
-  }, [postId]);
+    getPostById(id).then(setPostDetails);
+  }, [id]);
 
   return (
     <>

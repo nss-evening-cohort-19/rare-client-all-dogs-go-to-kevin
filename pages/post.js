@@ -4,17 +4,16 @@ import {
   Button, Col, Container, Row,
 } from 'react-bootstrap';
 import PostsCard from '../components/POST/PostsCard';
-import SearchPosts from '../components/POST/SearchPosts';
 import { getPosts } from '../managers/posts';
 
 export default function Posts() {
   const [post, setPosts] = useState([]);
-  const [searchTerm, setSearchTerm] = useState([]);
-
+  const [filteredPost, setFilteredPost] = useState([]);
+  console.warn(post);
   const getAllThePosts = () => {
     getPosts().then((postArray) => {
       setPosts(postArray);
-      setSearchTerm(postArray);
+      setFilteredPost(postArray);
     });
   };
 
@@ -33,14 +32,10 @@ export default function Posts() {
               </Button>
             </Link>
           </Col>
-          <Col>
-            {' '}
-            <SearchPosts post={post} setSearchTerm={setSearchTerm} />
-          </Col>
         </Row>
       </Container>
       <div className="d-flex flex-wrap">
-        {searchTerm.map((posts) => (
+        {filteredPost.map((posts) => (
           <PostsCard key={posts.id} postsObj={posts} onUpdate={getAllThePosts} />
         ))}
       </div>
