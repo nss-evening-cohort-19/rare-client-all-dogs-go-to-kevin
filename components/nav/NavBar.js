@@ -20,15 +20,17 @@ function AppNavBar({ token, setToken }) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             {token ? (
-              <Link passHref href="/">
-                <Nav.Link>Posts</Nav.Link>
-              </Link>
+              <>
+                <Link passHref href="/">
+                  <Nav.Link>Posts</Nav.Link>
+                </Link>
+                <Link passHref href="/tags">
+                  <Nav.Link>Tag Manager</Nav.Link>
+                </Link>
+              </>
             ) : (
               ''
             )}
-            <Link passHref href="/">
-              <Nav.Link>Tag Manager</Nav.Link>
-            </Link>
             {token ? (
               <button
                 type="button"

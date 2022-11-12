@@ -4,7 +4,8 @@ import React, {
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
-import { addPost, getPostById, updatePost } from '../../managers/posts';
+import { addPost, updatePost } from '../../managers/posts';
+import { getTags } from '../../managers/tags';
 
 const initialState = {
   user_id: null,
@@ -18,12 +19,13 @@ const initialState = {
 
 function PostForm({ obj }) {
   const [postFormInput, setPostFormInput] = useState(initialState);
-  const [post, setPost] = useState([]);
+  const [tags, setTags] = useState([]);
+  // const [post, setPost] = useState([]);
   const router = useRouter();
 
   useEffect(() => {
-    getPostById().then(setPost);
-    console.warn(post);
+    getTags().then(setTags);
+    // console.warn(post);
     if (obj.id) setPostFormInput(obj);
   }, [obj]);
 
@@ -60,6 +62,15 @@ function PostForm({ obj }) {
       <FloatingLabel controlId="floatingInput2" label="image_url" className="mb-3">
         <Form.Control type="url" placeholder="Enter an image url" name="image_url" value={postFormInput.image_url} onChange={handleChange} required />
       </FloatingLabel>
+      <Form.Select aria-label="Tags" size="sm" name="tags" value={postFormInput.tag} onChange={handleChange} className="mb-1" required>
+        <option value="">Choose Tag</option>
+        <option>none</option>
+        {tags.map((tag) => (
+          <option key={tag.id} value={tag.label}>
+            {tag.label}
+          </option>
+        ))}
+      </Form.Select>
       <Button type="submit">{obj.id ? 'Update' : 'Create'} Post</Button>
     </Form>
   );
@@ -71,7 +82,7 @@ PostForm.propTypes = {
     user_id: PropTypes.number,
     category_id: PropTypes.number,
     title: PropTypes.string,
-    publication_date: PropTypes.number,
+    publication_date: PropTypes.string,
     content: PropTypes.string,
     image_url: PropTypes.string,
   }),
