@@ -24,6 +24,9 @@ function AppNavBar({ token, setToken }) {
                 <Link passHref href="/">
                   <Nav.Link>Posts</Nav.Link>
                 </Link>
+                <Link passHref href="/category">
+                  <Nav.Link>Categories</Nav.Link>
+                </Link>
                 <Link passHref href="/tags">
                   <Nav.Link>Tag Manager</Nav.Link>
                 </Link>
@@ -44,6 +47,7 @@ function AppNavBar({ token, setToken }) {
               </button>
             ) : (
               <>
+
                 <Link passHref href="/register">
                   <Nav.Link>Register</Nav.Link>
                 </Link>
