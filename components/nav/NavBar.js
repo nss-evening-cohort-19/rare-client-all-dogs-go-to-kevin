@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import Search from '../SearchBar';
 import Logo from './rare.jpeg';
 
 function AppNavBar({ token, setToken }) {
@@ -28,16 +29,21 @@ function AppNavBar({ token, setToken }) {
             )}
 
             {token ? (
-              <button
-                type="button"
-                className="button is-outlined"
-                onClick={() => {
-                  setToken('');
-                  navigate('/login');
-                }}
-              >
-                Logout
-              </button>
+              <>
+                <button
+                  type="button"
+                  className="button is-outlined"
+                  onClick={() => {
+                    setToken('');
+                    navigate('/login');
+                  }}
+                >
+                  Logout
+                </button>
+                <li className="nav-item">
+                  <Search />
+                </li>
+              </>
             ) : (
               <>
                 <Link passHref href="/register">
