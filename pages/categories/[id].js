@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import {
   Card, Col, Container, Row,
 } from 'react-bootstrap';
-import { getSearchTermById } from '../../managers/categories';
+import { getCategories } from '../../managers/categories';
 
 export default function ViewCategories() {
   const [categoryDetails, setCategoryDetails] = useState({});
@@ -11,7 +11,7 @@ export default function ViewCategories() {
   const { id } = router.query;
 
   useEffect(() => {
-    getSearchTermById(id).then(setCategoryDetails);
+    getCategories(id).then(setCategoryDetails);
   }, [id]);
 
   return (

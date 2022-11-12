@@ -5,7 +5,6 @@ import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { addCategory, getCategories, updateCategory } from '../../managers/categories';
 
 const initialState = {
-  id: '',
   label: '',
 };
 
@@ -32,28 +31,22 @@ function CategoryForm({ obj }) {
     e.preventDefault();
     if (obj.id) {
       updateCategory(categoryFormInput)
-        .then(() => router.push('/'));
+        .then(() => router.push('/category'));
     } else {
       const payload = { ...categoryFormInput };
       addCategory(payload).then(() => {
-        router.push('/');
+        router.push('/category');
       });
     }
   };
 
   return (
     <Form className="form-floating" onSubmit={handleSubmit}>
-      <h2 className="text-black mt-5">{obj.id ? 'Update' : 'Create'} Category</h2>
-      <FloatingLabel controlId="floatingInput1" label="Title" className="mb-3">
-        <Form.Control type="text" placeholder="Label" name="title" value={categoryFormInput.label} onChange={handleChange} required />
+      <h2 className="text-black mt-5">{obj.id ? 'Update' : 'Create'} a Category</h2>
+      <FloatingLabel controlId="floatingInput1" label="Label" className="mb-3">
+        <Form.Control type="text" placeholder="Label" name="label" value={categoryFormInput.label} onChange={handleChange} required />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingInput1" label="Content" className="mb-3">
-        <Form.Control type="text" placeholder="Body" name="content" value={categoryFormInput.content} onChange={handleChange} required />
-      </FloatingLabel>
-      <FloatingLabel controlId="floatingInput2" label="image_url" className="mb-3">
-        <Form.Control type="url" placeholder="Enter an image url" name="image_url" value={categoryFormInput.image_url} onChange={handleChange} required />
-      </FloatingLabel>
-      <Button type="submit">{obj.id ? 'Update' : 'Create'} Post</Button>
+      <Button type="submit">{obj.id ? 'Update' : 'Create'} Category</Button>
     </Form>
   );
 }
