@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Link from 'next/link';
 import { Card, Button } from 'react-bootstrap';
 import Link from 'next/link';
 import { deletePost } from '../../managers/posts';
@@ -31,7 +30,7 @@ function PostsCard({ postsObj, onUpdate }) {
             EDIT
           </Button>
         </Link>
-        <Button size="sm" variant="danger" onClick={deletThisPost} className="m-2">
+        <Button size="sm" variant="danger" onClick={deleteThisPost} className="m-2">
           DELETE
         </Button>
       </Card.Body>
