@@ -15,7 +15,7 @@ export const addComment = (comment) => fetch('http://localhost:8088/comments', {
   body: JSON.stringify(comment),
 });
 
-export const updateComment = (comment) => fetch(`http://localhost:8088/animals/${comment.id}`, {
+export const updateComment = (comment) => fetch(`http://localhost:8088/comments/${comment.id}`, {
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
